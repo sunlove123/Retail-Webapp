@@ -9,7 +9,7 @@ pipeline {
             }
         }
         
-        stage('Code Analysis')[
+        stage('Code Analysis'){
             steps {
                 echo 'Running Code Analysis'
                 build '02Demo_CodeAnalysis'
