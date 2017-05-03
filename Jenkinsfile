@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 build '01Demo_Build'
-                propagate 'false'
+                propagate 'ignore'
             }
         }
         
