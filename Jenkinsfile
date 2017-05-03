@@ -6,7 +6,11 @@ pipeline {
             steps {
                 echo 'Building..'
                 build '01Demo_Build'
-                propagate 'ignore'
+            }
+            post {
+                always {
+                    echo 'This will always run'
+                }
             }
         }
         
