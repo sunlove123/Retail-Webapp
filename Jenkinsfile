@@ -1,28 +1,37 @@
 pipeline {
     agent any
+
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
-                bat 'echo "Fail!"; exit 1'
+                echo 'Building..'
+                build '01Demo_Build'
+            }
+            post {
+                always {
+                    echo 'This will always run'
+                }
             }
         }
-    }
-    post {
-        always {
-            echo 'This will always run'
+        
+        stage('Code Analysis'){
+            steps {
+                echo 'Running Code Analysis'
+                build '02Demo_CodeAnalysis'
+            }
         }
-        success {
-            echo 'This will run only if successful'
+        stage('Testing') {
+            steps {
+                echo 'Testing..'
+                build '03Demo_TestNG'
+                propagate 'ignore'
+            }
         }
-        failure {
-            echo 'This will run only if failed'
-        }
-        unstable {
-            echo 'This will run only if the run was marked as unstable'
-        }
-        changed {
-            echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                build '04Demo_Deployment'
+            }
         }
     }
 }
