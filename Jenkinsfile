@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 build '01Demo_Build'
+                propagate 'false'
             }
         }
         
@@ -19,6 +20,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 build '03Demo_TestNG'
+                propagate 'false'
             }
         }
         stage('Deploy') {
