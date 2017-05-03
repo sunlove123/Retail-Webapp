@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 build '03Demo_TestNG'
-                propagate 'false'
+                propagate 'ignore'
             }
         }
         stage('Deploy') {
