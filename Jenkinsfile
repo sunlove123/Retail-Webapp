@@ -1,12 +1,29 @@
 pipeline {
     agent any
-
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                git 'https://github.com/SudhirG85/Retail-Webapp.git'
-                bat 'mvn clean package'
+                build '01Demo_Build'
+            }
+        }
+        stage('Code Analysis'){
+            steps {
+                echo 'Running Code Analysis'
+                build '02Demo_CodeAnalysis'
+            }
+        }
+        stage('Testing') {
+            steps {
+                echo 'Testing..'
+                build '03Demo_TestNG'
+                propagate 'ignore'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                build '04Demo_Deployment'
             }
         }
     }
