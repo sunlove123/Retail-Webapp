@@ -5,27 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                build '01Demo_Build'
-                propagate 'false'
-            }
-        }
-        stage('Code Analysis'){
-            steps {
-                echo 'Running Code Analysis'
-                build '02Demo_CodeAnalysis'
-            }
-        }
-        stage('Testing') {
-            steps {
-                echo 'Testing..'
-                build '03Demo_TestNG'
-                propagate 'ignore'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                build '04Demo_Deployment'
+                git 'https://github.com/SudhirG85/Retail-Webapp.git'
+                bat 'mvn clean package'
             }
         }
     }
