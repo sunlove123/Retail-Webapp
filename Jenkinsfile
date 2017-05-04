@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                build 'Deploy_To_Tomcat'
+                build 'Demo_CI/Deploy_To_Tomcat'
             }
         }
         stage('Testing') {
