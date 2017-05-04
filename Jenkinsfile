@@ -7,6 +7,7 @@ pipeline {
                 echo 'Building..'
                 git 'https://github.com/SudhirG85/Retail-Webapp.git'
                 bat 'mvn clean package'
+                archive "target/**/*"
             }
         }
         stage('Deploy') {
@@ -22,7 +23,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 bat 'mvn integration-test'
-                step(junit healthScaleFactor: <object of type java.lang.Double>, testResults: '**/TEST-*.xml')
+                junit '**/TEST-*.xml'
             }
         }          
     }
