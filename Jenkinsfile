@@ -22,6 +22,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 bat 'mvn integration-test'
+                junit healthScaleFactor: <object of type java.lang.Double>, testResults: '**/TEST-*.xml'
             }
         }          
     }
