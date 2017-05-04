@@ -3,7 +3,7 @@ node {
       git url: 'https://github.com/SudhirG85/Retail-Webapp.git'
     }
     stage("Build"){
-      bat "mvn clean package"
+      bat "mvn clean install"
       step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
     }
     stage('Deploy') {
