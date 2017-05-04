@@ -69,6 +69,7 @@
 				<configuration>
 					<warFile>target/retailone.war</warFile>
 					<path>/retailone</path>
+					<port>8026</port>
 					<contextReloadable>true</contextReloadable>
 				</configuration>
 				<executions>
