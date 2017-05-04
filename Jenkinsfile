@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                build '01Demo_Build'
+                build '01Demo_Build', propagate 'false'
             }
             post {
                 always {
