@@ -16,5 +16,6 @@ node {
     stage("Test"){
       bat "mvn integration-test"
       step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+      performanceReport compareBuildPrevious: true, configType: 'ART', errorFailedThreshold: 0, errorUnstableResponseTimeThreshold: '10', errorUnstableThreshold: 0, failBuildIfNoResultFile: false, modeOfThreshold: false, modePerformancePerTestCase: true, modeThroughput: true, nthBuildNumber: 0, parsers: [[$class: 'JUnitParser', glob: '**/TEST*.xml']], relativeFailedThresholdNegative: 0.0, relativeFailedThresholdPositive: 0.0, relativeUnstableThresholdNegative: 0.0, relativeUnstableThresholdPositive: 0.0
     }
 }
