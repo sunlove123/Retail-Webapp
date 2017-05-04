@@ -7,12 +7,6 @@ pipeline {
                 echo 'Building..'
                 build '01Demo_Build', propagate 'false'
             }
-            post {
-                always {
-                    echo 'This will always run'                    
-                    echo currentBuild.result
-                }
-            }
         }
         stage('Code Analysis'){
             steps {
