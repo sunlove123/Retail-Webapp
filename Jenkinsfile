@@ -1,5 +1,4 @@
 node {
-  stages{
     stage("Checkout"){
       git url: 'https://github.com/SudhirG85/Retail-Webapp.git'
     }
@@ -18,5 +17,4 @@ node {
       bat "mvn integration-test"
       step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
     }
-  }
 }
