@@ -12,7 +12,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-                bat 'set CATALINA_HOME=C:\\MyApplications\\apache-tomcat-8.5.9\necho %WORKSPACE%\nC:\\MyApplications\\apache-tomcat-8.5.9\\bin\\shutdown.bat\nCOPY .\\target\\retailone.war C:\\MyApplications\\apache-tomcat-8.5.9\\webapps\\nC:\\MyApplications\\apache-tomcat-8.5.9\\bin\\startup.bat'
+                bat 'set CATALINA_HOME=C:\\MyApplications\\apache-tomcat-8.5.9'
+                bat 'echo %WORKSPACE%'
+                bat 'CALL C:\\MyApplications\\apache-tomcat-8.5.9\\bin\\shutdown.bat'
+                bat 'COPY .\\target\\retailone.war C:\\MyApplications\\apache-tomcat-8.5.9\\webapps\\'
+                bat 'CALL C:\\MyApplications\\apache-tomcat-8.5.9\\bin\\startup.bat'
             }
         }  
         stage('Test') {
