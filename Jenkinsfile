@@ -1,34 +1,14 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                git 'https://github.com/SudhirG85/Retail-Webapp.git'
-                bat 'mvn clean package'
-                archive "target/**/*"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying..'
-                bat 'echo %WORKSPACE%'
-                bat 'set CATALINA_HOME=C:\\MyApplications\\apache-tomcat-8.5.9\nCALL C:\\MyApplications\\apache-tomcat-8.5.9\\bin\\shutdown.bat'
-                bat 'COPY .\\target\\retailone.war C:\\MyApplications\\apache-tomcat-8.5.9\\webapps\\'
-                bat 'set CATALINA_HOME=C:\\MyApplications\\apache-tomcat-8.5.9\nCALL C:\\MyApplications\\apache-tomcat-8.5.9\\bin\\startup.bat'
-            }
-        }  
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                bat 'mvn integration-test'
-            }
-            post {
-                always {
-                    junit '**/TEST-*.xml'
-                }
-            }
-        }          
-    }
+node('master') {
+  git url: 'https://github.com/SudhirG85/Retail-Webapp.git'
+  def v = version()
+  if (v) {
+    echo "Building version ${v}"
+  }
+  bat "mvn integration-test"
+  step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
+  step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+def version() {
+  def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+  matcher ? matcher[0][1] : null
 }
