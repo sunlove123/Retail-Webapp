@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                build '01Demo_Build', propagate 'false'
+                build '01Demo_Build'
+                propagate 'false'
             }
         }
         stage('Code Analysis'){
