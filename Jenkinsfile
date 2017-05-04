@@ -23,7 +23,11 @@ pipeline {
             steps {
                 echo 'Testing..'
                 bat 'mvn integration-test'
-                junit '**/TEST-*.xml'
+            }
+            post {
+                always {
+                    junit '**/TEST-*.xml'
+                }
             }
         }          
     }
