@@ -13,17 +13,16 @@ pipeline {
                 build '02Demo_CodeAnalysis'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                build 'Deploy_To_Tomcat'
+            }
+        }
         stage('Testing') {
             steps {
                 echo 'Testing..'
                 build '03Demo_TestNG'
-                propagate 'ignore'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                build '04Demo_Deployment'
             }
         }
     }
