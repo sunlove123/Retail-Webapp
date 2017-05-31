@@ -74,7 +74,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<warFile>target/retailone.war</warFile>
+					<warFile>target/retailone-${pom.version}.war</warFile>
 					<path>/retailone</path>
 					<port>8026</port>
 					<contextReloadable>true</contextReloadable>
