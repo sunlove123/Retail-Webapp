@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cts.sample</groupId>
 	<artifactId>retailone</artifactId>
-	<version>4.0</version>
+	<version>3.0</version>
 	<packaging>war</packaging>
 	<properties>
         <sonar.host.url>http://10.224.90.21:9000/</sonar.host.url>
