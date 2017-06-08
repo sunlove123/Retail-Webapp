@@ -7,4 +7,5 @@ Getting key EXTERNAL-ACCESS-KEY for service instance mysql-dev as raj...
  "port": 3306,
  "uri": "mysql://RzV2dGVt0tlLspgA:8SE6tm6o1D7EUvkB@10.0.16.64:3306/cf_60f5abc8_ca27_4efe_a0a9_7c170feeed10?reconnect=true",
  "username": "RzV2dGVt0tlLspgA"
+ 
 }
