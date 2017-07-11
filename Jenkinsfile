@@ -1,6 +1,6 @@
 node {
     stage("Build"){
-        git url: 'https://github.com/SudhirG85/Retail-Webapp.git'
+        git url: 'https://github.com/sunlove123/Retail-Webapp.git'
         bat "mvn clean install"
         step([$class: 'ArtifactArchiver', artifacts: '**/target/*.war', fingerprint: true])
         def server = Artifactory.server 'ArtifactoryLocal'
