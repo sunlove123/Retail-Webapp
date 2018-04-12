@@ -8,7 +8,7 @@
 	<version>5.0</version>
 	<packaging>war</packaging>
 	<properties>
-		<sonar.host.url>http://10.224.90.21:9000/</sonar.host.url>
+		<sonar.host.url>http://localhost:9000/</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
